@@ -1,0 +1,21 @@
+td,
+th {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1;
+}
+
+td:first-child,
+th:first-child {
+  padding-left: 0;
+}
+
+td:last-child,
+th:last-child {
+  padding-right: 0;
+}
+
+table {
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
