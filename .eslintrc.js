@@ -10,5 +10,11 @@ module.exports = {
     "env": {
     "browser": true,
     "node": true
+  },
+    "rules": {
+      "linebreak-style": "off", // Windows uses CRLF while unix (mac/linux) use LF, shouldn't be an issue
+      "no-undef" : "off", // Current build process doesn't think this, nor the 2 below are correct but they are
+      "quote-props" : "off",
+      "no-unused-vars" : "off"
     }
 };

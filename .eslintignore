@@ -1,6 +1,6 @@
 limbo
 
-development/js/libs/**/*.js
+development/js/**/*lib.js
 
 production
 

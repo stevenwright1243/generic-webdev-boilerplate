@@ -2,7 +2,7 @@ var source = 'development/';
 var limbo = 'limbo/assets/';
 var dest = 'production/';
 
-var useSourcemaps = false;
+var useSourcemaps = true;
 var minify = false;
 
 var sassArray = [
@@ -11,7 +11,8 @@ var sassArray = [
 ];
 
 var jsArray = [
-  'development/js/libs/lib.js',
+  'development/js/include.lib.js',
+  'development/js/include.js',
   'development/js/scripts.js'
 ];
 
@@ -24,6 +25,7 @@ var pageArray = [
 
 // optimize images (prevents other tasks, meant to be run only when images need to be optimized)
 var images = false;
+var imageDest = dest + 'assets/images';
 
 var gulp = require('gulp');
 var plumber = require('gulp-plumber');                // https://github.com/floatdrop/gulp-plumber
@@ -69,11 +71,11 @@ gulp.task('javascript', function(){
   return gulp.src(jsArray, {base: 'development/js'})
   .pipe(plumber())
   .pipe(gulpif(useSourcemaps, sourcemaps.init()))
-  .pipe(concat('all.js'))
-  .pipe(babel({
+  .pipe(concat('all.js')) // concatenate all js into a single file
+  .pipe(babel({ // convert latest js into browser ready js
     presets: ['latest']
   }))
-  .pipe(gulpif(minify, uglify()))
+  .pipe(gulpif(minify, uglify())) // js minifier
   .pipe(gulpif(useSourcemaps, sourcemaps.write()))
   .pipe(gulp.dest(limbo + 'js'));
 });
@@ -91,8 +93,9 @@ gulp.task('revisions', ['sass', 'javascript'], function() {
 
 gulp.task('imageoptim', function () {
   gulp.src(source + 'images/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg,SVG,ico}')
+    .pipe(plumber())
     .pipe(image())
-    .pipe(gulp.dest(dest + 'assets/images'));
+    .pipe(gulp.dest(imageDest));
 });
 
 // Watch everything and update
