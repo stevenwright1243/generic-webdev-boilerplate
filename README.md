@@ -1,9 +1,7 @@
 # Web Design Template
----
 This is a new website template leveraging tools like NPM, Gulp, Sass, babel, a small css framework based off of flexbox, and sectioning off parts of the website on the server side with php
 
 ## Usage
----
 ### Sass
 Sass files are separated by the following
 - fonts/fonts.scss, a file to hold font data from http://www.localfont.com/
@@ -33,7 +31,7 @@ Separate your Javascript files by parts (example: one file for jQuery libray, an
 Inside includes/classes is a FileRev.php file that handles file revisioning server side as css and js files will be appended with a random string of numbers to break cacheing whenever a file is updated. Check 'head.php' and 'footer.php' for examples of usage
 
 
-## Technologies used
+### Technologies used
 - [Sass](http://sass-lang.com/) (css with superpowers)
 - Small css framework
   - Uses [Normalize.css](https://github.com/necolas/normalize.css), [Flexbox Grid](https://github.com/kristoferjoseph/flexboxgrid), and [Skeleton.css](https://github.com/dhg/Skeleton) (Minus the grid)
@@ -58,8 +56,7 @@ Inside includes/classes is a FileRev.php file that handles file revisioning serv
   - Automatically optimize JPG, PNG, GIF, and SVG
 
 
-## Packages
----
+### Packages
 - [babel-eslint: ^7.1.1](https://www.npmjs.com/package/babel-eslint)
 - [babel-preset-latest: ^6.22.0](https://www.npmjs.com/package/babel-preset-latest)
 - [css-mqpacker: ^5.0.1](https://www.npmjs.com/package/css-mqpacker)
