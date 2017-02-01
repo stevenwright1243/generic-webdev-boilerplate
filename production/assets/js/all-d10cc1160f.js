@@ -1,6 +1,0 @@
-'use strict';
-
-document.getElementById('heading').addEventListener('click', function () {
-  alert('Hello World');
-});
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNjcmlwdHMuanMiXSwibmFtZXMiOlsiZG9jdW1lbnQiLCJnZXRFbGVtZW50QnlJZCIsImFkZEV2ZW50TGlzdGVuZXIiLCJhbGVydCJdLCJtYXBwaW5ncyI6Ijs7QUFBQUEsU0FBQUMsY0FBQSxDQUFBLFNBQUEsRUFBQUMsZ0JBQUEsQ0FBQSxPQUFBLEVBQUEsWUFBQTtBQUNBQyxRQUFBLGFBQUE7QUFDQSxDQUZBIiwiZmlsZSI6ImFsbC5qcyIsInNvdXJjZXNDb250ZW50IjpbImRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdoZWFkaW5nJykuYWRkRXZlbnRMaXN0ZW5lcignY2xpY2snLCAoKSA9PiB7XG4gIGFsZXJ0KCdIZWxsbyBXb3JsZCcpO1xufSk7XG4iXX0=
