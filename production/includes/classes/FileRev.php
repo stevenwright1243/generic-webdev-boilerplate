@@ -6,7 +6,7 @@
 class FileRev
 {
 
-  public static function revFunction($file_path, $manifest_path = 'assets/rev-manifest.json')
+  public static function rev($file_path, $manifest_path = 'assets/rev-manifest.json')
   {
 
     if (file_exists($manifest_path)) {
@@ -25,7 +25,7 @@ class FileRev
 /*
 * function that uses revFunction to use a style or script or an insert scripts/styles into certain pages
 **/
-  public static function rev($file_path, $file_type = null, $pages = null, $manifest_path = 'assets/rev-manifest.json')
+  public static function revArray($file_path, $file_type = null, $pages = null, $manifest_path = 'assets/rev-manifest.json')
   {
 
     if ($pages === null) {

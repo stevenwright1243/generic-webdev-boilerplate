@@ -12,6 +12,20 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <?php echo FileRev::rev('assets/css/styles.css', 'css'); ?>
+  <link rel="stylesheet" href="<?php echo FileRev::rev('assets/css/styles.css'); ?>">
+
+
+
+
+  <?php
+  // Set an array of pages that we want to include an additional css file on
+  $rev_page_array = [
+    '/contact-us.php',
+    '/about-us.php'
+  ];
+
+  echo FileRev::revArray('assets/css/other.css', 'css', $rev_page_array);
+
+  ?>
 
 </head>

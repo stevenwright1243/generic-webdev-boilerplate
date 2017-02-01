@@ -11,8 +11,6 @@ var sassArray = [
 ];
 
 var jsArray = [
-  'development/js/include.lib.js',
-  'development/js/include.js',
   'development/js/scripts.js'
 ];
 
@@ -58,7 +56,7 @@ gulp.task('sass', function () {
   })))
   .pipe(gulpif(minify, postcss([
     flexbugs(), // Fix flexbox bugs for IE 10-11
-    mqpacker(), // TODO: Can somtimes break...
+    mqpacker(), // TODO: Can somtimes break?
     cssnano() // css minifier
   ])))
   .pipe(autoprefixer())

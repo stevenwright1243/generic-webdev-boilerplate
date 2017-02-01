@@ -3,6 +3,6 @@
 
 </footer>
 </div> <!-- site-container -->
-<?php require 'scripts.php'; ?>
+<script src="<?php echo FileRev::rev('assets/js/all.js'); ?>"></script>
 </body>
 </html>
