@@ -36,7 +36,7 @@ js: `<script src="<?php echo FileRev::rev('assets/js/all.js'); ?>"></script>`
 
 or to add files to specific pages
 
-```
+```php
 <?php
   // Set an array of pages that we want to include an additional css file on
   $css_page_array = [
