@@ -48,6 +48,23 @@ or to add files to specific pages
 ?>
 ```
 
+### htaccess
+
+#### Caching
+Enables caching for 1 month on the following types of files:
+- jpg/jpeg
+- png
+- gif
+- svg
+- css
+- js
+
+1 year:
+- Favicons
+
+#### ETags
+Removes ETags because they're apparently bad for performance and will decrease yslow score on GTmetrix https://gtmetrix.com/configure-entity-tags-etags.html
+
 
 ### Technologies used
 - [Sass](http://sass-lang.com/) (css with superpowers)
