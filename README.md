@@ -28,7 +28,25 @@ Separate your Javascript files by parts (example: one file for jQuery libray, an
 - variable images can be set to true to enable optimization of images (Prevents other tasks)
 
 ### FileRev
-Inside includes/classes is a FileRev.php file that handles file revisioning server side as css and js files will be appended with a random string of numbers to break cacheing whenever a file is updated. Check 'head.php' and 'footer.php' for examples of usage
+Inside includes/classes is a FileRev.php file that handles file revisioning server side as css and js files will be appended with a random string of numbers to break cacheing whenever a file is updated.
+
+css: `<link rel="stylesheet" href="<?php echo FileRev::rev('assets/css/styles.css'); ?>">`
+
+js: `<script src="<?php echo FileRev::rev('assets/js/all.js'); ?>"></script>`
+
+or to add files to specific pages
+
+```
+<?php
+  // Set an array of pages that we want to include an additional css file on
+  $css_page_array = [
+    '/contact-us.php',
+    '/about-us.php'
+  ];
+
+  echo FileRev::revArray('assets/css/other.css', 'css', $rev_page_array);
+?>
+```
 
 
 ### Technologies used
