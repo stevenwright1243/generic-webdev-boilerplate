@@ -12,6 +12,21 @@ If not using atom, then these must be globally installed and ran through the nod
 ### Run with command `gulp` in node terminal
 ---
 
+## Ideology
+I wanted an all purpose framework that would leverage the following:
+- Sass
+- Flexbox
+- Modularity
+- Handle revisioning effortlessly
+- Javascript and Sass linting
+- Optimize Javascript/Sass
+- Use Babel for cutting edge Javascript
+- Utilize some modern Javascript technologies
+- Not dependent on big frameworks like Bootstrap or jQuery
+- Still used php server side out of convenience (shared hosting doesn't play well with anything but php usually)
+
+So I made it!
+
 
 ## Usage
 ### Sass
