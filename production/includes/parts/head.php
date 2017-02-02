@@ -19,12 +19,12 @@
 
   <?php
   // Set an array of pages that we want to include an additional css file on
-  $rev_page_array = [
-    '/contact-us.php',
-    '/about-us.php'
+  $alt_pages = [
+    'about',
+    'contact'
   ];
 
-  echo FileRev::revArray('assets/css/other.css', 'css', $rev_page_array);
+  echo FileRev::rev('assets/css/other.css', $rev_page_array);
 
   ?>
 

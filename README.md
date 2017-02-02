@@ -1,7 +1,15 @@
 # Web Design Template
-This is a new website template leveraging tools like NPM, Gulp, Sass, babel, a small css framework based off of flexbox, and sectioning off parts of the website on the server side with php
+This is a website template leveraging tools like NPM, Gulp, Sass, babel, a small css framework based off of flexbox, and sectioning off parts of the website on the server side with php
 
-#### Supports IE10+
+requires that gulp be globally installed with node/NPM via `npm install -g gulp`
+
+eslint and sass-lint can be used through atom packages https://github.com/AtomLinter/linter-eslint and https://atom.io/packages/linter-sass-lint using https://github.com/steelbrain/linter
+
+If not using atom, then these must be globally installed and ran through the node command line, unless there is a plugin for your code editor that supports them.
+
+### Run with command `gulp` in node terminal
+---
+
 
 ## Usage
 ### Sass
@@ -41,12 +49,30 @@ or to add files to specific pages
 ```php
 <?php
   // Set an array of pages that we want to include an additional css file on
-  $css_page_array = [
-    '/contact-us.php',
-    '/about-us.php'
+  $alt_pages = [
+    'contact',
+    'about'
   ];
 
-  echo FileRev::revArray('assets/css/other.css', 'css', $rev_page_array);
+  echo FileRev::rev('assets/css/other.css', $alt_pages);
+
+  // or
+
+  echo FileRev::rev('assets/css/other.css', ['contact', 'about']);
+
+  // js works as well
+
+  echo FileRev::rev('assets/js/all.js', $alt_pages);
+
+  // also valid
+
+  $alt_pages = [
+    'contact.php',
+    'about.php'
+  ]
+
+  echo FileRev::rev('assets/css/other.css', ['contact.php', 'about.php']);
+
 ?>
 ```
 
@@ -154,3 +180,6 @@ Removes ETags because they're apparently bad for performance and will decrease y
 - [postcss-flexbugs-fixes: ^2.1.0](https://www.npmjs.com/package/postcss-flexbugs-fixes)
 - [rev-del: ^1.0.5](https://www.npmjs.com/package/rev-del)
 - [sass-lint: ^1.10.2](https://www.npmjs.com/package/sass-lint)
+
+### Notes
+- The revisioning for CSS and JS files are different because of performance. Gulp will recompile Sass if you edit Javascript and vice versa if the revisioning task is in the same task.
