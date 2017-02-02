@@ -7,6 +7,8 @@ eslint and sass-lint can be used through atom packages https://github.com/AtomLi
 
 If not using atom, then these must be globally installed and ran through the node command line, unless there is a plugin for your code editor that supports them.
 
+#### Supports modern browsers and IE10+
+
 ### Run with command `gulp` in node terminal
 ---
 
@@ -180,6 +182,3 @@ Removes ETags because they're apparently bad for performance and will decrease y
 - [postcss-flexbugs-fixes: ^2.1.0](https://www.npmjs.com/package/postcss-flexbugs-fixes)
 - [rev-del: ^1.0.5](https://www.npmjs.com/package/rev-del)
 - [sass-lint: ^1.10.2](https://www.npmjs.com/package/sass-lint)
-
-### Notes
-- The revisioning for CSS and JS files are different because of performance. Gulp will recompile Sass if you edit Javascript and vice versa if the revisioning task is in the same task.
