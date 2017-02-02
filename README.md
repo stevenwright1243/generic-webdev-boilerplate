@@ -17,6 +17,7 @@ I wanted an all purpose framework that would leverage the following:
 - Sass
 - Flexbox
 - Modularity
+- All purpose htaccess
 - Handle revisioning effortlessly
 - Javascript and Sass linting
 - Optimize Javascript/Sass
