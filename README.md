@@ -1,6 +1,8 @@
 # Web Design Template
 This is a new website template leveraging tools like NPM, Gulp, Sass, babel, a small css framework based off of flexbox, and sectioning off parts of the website on the server side with php
 
+#### Supports IE10+
+
 ## Usage
 ### Sass
 Sass files are separated by the following
@@ -50,6 +52,30 @@ or to add files to specific pages
 
 ### htaccess
 
+#### Gzip
+Enables gzip compression for the following:
+- text/html
+- text/css
+- text/javascript
+- text/xml
+- text/plain
+- image/x-icon
+- image/svg+xml
+- application/rss+xml
+- application/javascript
+- application/x-javascript
+- application/xml
+- application/xhtml+xml
+- application/x-font
+- application/x-font-truetype
+- application/x-font-ttf
+- application/x-font-otf
+- application/x-font-opentype
+- application/vnd.ms-fontobject
+- font/ttf
+- font/otf
+- font/opentype
+
 #### Caching
 Enables caching for 1 month on the following types of files:
 - jpg/jpeg
@@ -64,6 +90,16 @@ Enables caching for 1 month on the following types of files:
 
 #### ETags
 Removes ETags because they're apparently bad for performance and will decrease yslow score on GTmetrix https://gtmetrix.com/configure-entity-tags-etags.html
+
+#### Rewrites
+- 404s to homepage
+- Trailing slash to no trailing slash (ex: contact-us/ to contact-us)
+- Remove php/html extensions from pages (ex: contact-us.php to contact-us)
+- Turn homepage/index into just homepage
+  - Force https/www (default)
+  - Force https/no www
+  - Force http/www
+  - Force http/no www
 
 
 ### Technologies used
