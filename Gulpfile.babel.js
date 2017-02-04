@@ -35,6 +35,7 @@ const revReplace = require('gulp-rev-replace');         // https://github.com/ja
 const revDel = require('rev-del');                      // https://github.com/callumacrae/rev-del
 
 
+// Separate php tasks for performance
 gulp.task('phpClasses', () => {
   gulp.src('development/includes/classes/**/**.php', { base: 'development/includes/classes' })
   .pipe(plumber())
