@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies: "off" */
 // Import configuration settings (file name has .babel so it can use es6 modules)
 
 import {
