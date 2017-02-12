@@ -82,7 +82,7 @@ gulp.task('sass', () => {
     cssnano(), // css minifier
   ])))
   .pipe(autoprefixer())
-  .pipe(gulpif(useSourcemaps, sourcemaps.write()))
+  .pipe(gulpif(useSourcemaps, sourcemaps.write('maps')))
   .pipe(gulp.dest(`${limbo}css`));
 });
 
@@ -96,7 +96,7 @@ gulp.task('javascript', () => {
     presets: ['latest'],
   }))
   .pipe(gulpif(minify, uglify())) // js minifier
-  .pipe(gulpif(useSourcemaps, sourcemaps.write()))
+  .pipe(gulpif(useSourcemaps, sourcemaps.write('maps')))
   .pipe(gulp.dest(`${limbo}js`));
 });
 
@@ -119,6 +119,12 @@ gulp.task('jsRevisions', ['javascript'], () => {
     .pipe(gulp.dest(dest))
     .pipe(rev.manifest('assets/js/manifest.json'))
     .pipe(revDel({ dest, force: true })) // force: true so that revDel can delete files above itself
+    .pipe(gulp.dest(dest));
+});
+
+gulp.task('maps', () => {
+  gulp.src(`${limbo}**/**/**/*.map`, { base: 'limbo/' })
+    .pipe(plumber())
     .pipe(gulp.dest(dest));
 });
 
@@ -151,5 +157,5 @@ if (images === true) {
     gulp.watch(`${source}includes/sections/**/*.php`, ['phpSections']);
     gulp.watch(`${source}pages/**/*.php`, ['phpPages']);
   });
-  gulp.task('default', ['sassRevisions', 'jsRevisions', 'phpClasses', 'phpFunctions', 'phpParts', 'phpSections', 'phpPages', 'watch']);
+  gulp.task('default', ['sassRevisions', 'jsRevisions', 'phpClasses', 'phpFunctions', 'phpParts', 'phpSections', 'phpPages', 'maps', 'watch']);
 }
