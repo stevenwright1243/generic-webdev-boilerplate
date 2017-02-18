@@ -49,8 +49,8 @@ Separate your Javascript files by parts (example: one file for jQuery libray, an
 - variable 'dest' is the path to the production folder
 - variable useSourcemaps can be set to true to enable sourcemaps for sass and Javascript(Can slow down Gulp tasks)
 - variable minify can be set to true to enable minification of css and js(Can slow down Gulp tasks)
-- variable sassArray is an array of the paths of sass files to be piped through Gulp
-- variable jsArray is an array of the paths of Javascript files to be piped through Gulp
+- variable sass is an array of the paths of sass files to be piped through Gulp
+- variable js is an array of the paths of Javascript files to be piped through Gulp
 - variable removeUnusedcss can be set to true to remove unused css, but depends on pageArray
 - variable pageArray is an array of pages (prefer urls) that will be scanned to remove unused css
 - variable images can be set to true to enable optimization of images (Prevents other tasks)
