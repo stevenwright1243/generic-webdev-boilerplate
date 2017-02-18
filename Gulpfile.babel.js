@@ -8,11 +8,13 @@ import {
   minify,
   sassArray,
   jsArray,
+  usableBabelIgnore,
   removeUnusedCss,
   pageArray,
   images,
   imageDest,
 } from './gulp.config';
+
 
 // Packages for Gulp
 const gulp = require('gulp');                           // https://github.com/gulpjs/gulp
@@ -37,31 +39,31 @@ const revDel = require('rev-del');                      // https://github.com/ca
 
 // Separate php tasks for performance
 gulp.task('phpClasses', () => {
-  gulp.src('development/includes/classes/**/**.php', { base: 'development/includes/classes' })
+  return gulp.src('development/includes/classes/**/**.php', { base: 'development/includes/classes' })
   .pipe(plumber())
   .pipe(gulp.dest(`${dest}includes/classes`));
 });
 
 gulp.task('phpFunctions', () => {
-  gulp.src('development/includes/functions/**/**.php', { base: 'development/includes/functions' })
+  return gulp.src('development/includes/functions/**/**.php', { base: 'development/includes/functions' })
   .pipe(plumber())
   .pipe(gulp.dest(`${dest}includes/functions`));
 });
 
 gulp.task('phpParts', () => {
-  gulp.src('development/includes/parts/**/**.php', { base: 'development/includes/parts' })
+  return gulp.src('development/includes/parts/**/**.php', { base: 'development/includes/parts' })
   .pipe(plumber())
   .pipe(gulp.dest(`${dest}includes/parts`));
 });
 
 gulp.task('phpSections', () => {
-  gulp.src('development/includes/sections/**/**.php', { base: 'development/includes/sections' })
+  return gulp.src('development/includes/sections/**/**.php', { base: 'development/includes/sections' })
   .pipe(plumber())
   .pipe(gulp.dest(`${dest}includes/sections`));
 });
 
 gulp.task('phpPages', () => {
-  gulp.src('development/pages/**/**.php', { base: 'development/pages' })
+  return gulp.src('development/pages/**/**.php', { base: 'development/pages' })
   .pipe(plumber())
   .pipe(gulp.dest(dest));
 });
@@ -69,7 +71,7 @@ gulp.task('phpPages', () => {
 
 // Sassify, optimize, automatically prefix, and minify css
 gulp.task('sass', () => {
-  gulp.src(sassArray, { base: 'development/sass' })
+  return gulp.src(sassArray, { base: 'development/sass' })
   .pipe(plumber())
   .pipe(gulpif(useSourcemaps, sourcemaps.init()))
   .pipe(sass())
@@ -88,13 +90,15 @@ gulp.task('sass', () => {
 
 // Babelfy, minify and then combine js files
 gulp.task('javascript', () => {
-  gulp.src(jsArray, { base: 'development/js' })
+  return gulp.src(jsArray, { base: 'development/js' })
   .pipe(plumber())
   .pipe(gulpif(useSourcemaps, sourcemaps.init()))
-  .pipe(concat('all.js')) // concatenate all js into a single file
   .pipe(babel({ // convert latest js into browser ready js
     presets: ['latest'],
+    // Ignore seems to mean only and vice versa...
+    only: usableBabelIgnore,
   }))
+  .pipe(concat('all.js')) // concatenate all js into a single file
   .pipe(gulpif(minify, uglify())) // js minifier
   .pipe(gulpif(useSourcemaps, sourcemaps.write('maps')))
   .pipe(gulp.dest(`${limbo}js`));
@@ -102,7 +106,7 @@ gulp.task('javascript', () => {
 
 // Rename assets based on content cache
 gulp.task('sassRevisions', ['sass'], () => {
-  gulp.src(`${limbo}**/**/**/*.css`, { base: 'limbo/' })
+  return gulp.src(`${limbo}**/**/**/*.css`, { base: 'limbo/' })
     .pipe(plumber())
     .pipe(rev())
     .pipe(gulp.dest(dest))
@@ -113,7 +117,7 @@ gulp.task('sassRevisions', ['sass'], () => {
 
 // Rename assets based on content cache
 gulp.task('jsRevisions', ['javascript'], () => {
-  gulp.src(`${limbo}**/**/**/*.js`, { base: 'limbo/' })
+  return gulp.src(`${limbo}**/**/**/*.js`, { base: 'limbo/' })
     .pipe(plumber())
     .pipe(rev())
     .pipe(gulp.dest(dest))
@@ -122,20 +126,14 @@ gulp.task('jsRevisions', ['javascript'], () => {
     .pipe(gulp.dest(dest));
 });
 
-gulp.task('maps', () => {
-  gulp.src(`${limbo}**/**/**/*.map`, { base: 'limbo/' })
-    .pipe(plumber())
-    .pipe(gulp.dest(dest));
-});
-
-gulp.task('phpRevisions', ['phpClasses', 'phpFunctions', 'phpParts', 'phpSections', 'phpPages'], () => {
-  gulp.src(`${limbo}**/**/**/*.php`, { base: 'limbo/' })
+gulp.task('maps', ['jsRevisions', 'sassRevisions'], () => {
+  return gulp.src(`${limbo}**/**/**/*.map`, { base: 'limbo/' })
     .pipe(plumber())
     .pipe(gulp.dest(dest));
 });
 
 gulp.task('imageoptim', () => {
-  gulp.src(`${source}images/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg,SVG,ico}`)
+  return gulp.src(`${source}images/**/*.{jpg,JPG,jpeg,JPEG,png,PNG,gif,GIF,svg,SVG,ico}`)
     .pipe(plumber())
     .pipe(image())
     .pipe(gulp.dest(imageDest));

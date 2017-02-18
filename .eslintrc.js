@@ -16,6 +16,7 @@ module.exports = {
       "no-undef" : "off", // Current build process doesn't think this, nor the 2 below are correct but they are
       "quote-props" : "off",
       "no-unused-vars" : "off",
-      "import/no-extraneous-dependencies" : "off"
+      "import/no-extraneous-dependencies" : "off",
+      "arrow-body-style" : "off"
     }
 };
